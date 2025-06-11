@@ -58,7 +58,6 @@ class TutorController extends Controller
         ]);
 
         if ($request->hasFile('foto')) {
-            // Hapus foto lama jika ada
             if ($tutor->foto) {
                 Storage::disk('public')->delete($tutor->foto);
             }
