@@ -6,12 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Models\Jadwal;
 use App\Models\Tutor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class JadwalController extends Controller
 {
     public function index()
     {
-        $jadwals = Jadwal::with(['tutor', 'pendaftarans'])->latest()->get();
+        $jadwals = Jadwal::with(['tutor', 'pendaftarans'])
+            ->orderByRaw("FIELD(hari, 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu')")
+            ->orderBy('jam_mulai')
+            ->get();
+
         return view('admin.jadwal.index', compact('jadwals'));
     }
 
@@ -23,8 +28,7 @@ class JadwalController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'mata_pelajaran' => 'required|string|max:255',
+        $validator = Validator::make($request->all(), [
             'hari' => 'required|string|max:20',
             'jam_mulai' => 'required|date_format:H:i',
             'jam_selesai' => 'required|date_format:H:i|after:jam_mulai',
@@ -32,9 +36,23 @@ class JadwalController extends Controller
             'kuota' => 'required|integer|min:1|max:10'
         ]);
 
-        $validated['terdaftar'] = 0;
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
-        Jadwal::create($validated);
+        $data = $request->only([
+            'hari',
+            'jam_mulai',
+            'jam_selesai',
+            'tutor_id',
+            'kuota'
+        ]);
+
+        $data['terdaftar'] = 0;
+
+        Jadwal::create($data);
 
         return redirect()->route('admin.jadwals.index')
             ->with('success', 'Jadwal berhasil ditambahkan!');
@@ -49,7 +67,6 @@ class JadwalController extends Controller
     public function update(Request $request, Jadwal $jadwal)
     {
         $request->validate([
-            'mata_pelajaran' => 'required|string|max:255',
             'hari' => 'required|string',
             'jam_mulai' => 'required',
             'jam_selesai' => 'required|after:jam_mulai',

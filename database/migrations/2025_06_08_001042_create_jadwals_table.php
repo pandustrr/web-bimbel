@@ -10,12 +10,12 @@ return new class extends Migration
     {
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
-            $table->string('mata_pelajaran');
             $table->string('hari');
             $table->time('jam_mulai');
             $table->time('jam_selesai');
-            $table->foreignId('tutor_id')->constrained('tutors');
+            $table->foreignId('tutor_id')->constrained('tutors')->onDelete('cascade');
             $table->integer('kuota')->default(5);
+            $table->integer('terdaftar')->default(0);
             $table->timestamps();
         });
     }

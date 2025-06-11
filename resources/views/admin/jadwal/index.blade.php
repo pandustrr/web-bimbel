@@ -20,7 +20,6 @@
             <thead>
                 <tr>
                     <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-sm font-semibold text-gray-700">No</th>
-                    <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-sm font-semibold text-gray-700">Mata Pelajaran</th>
                     <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-sm font-semibold text-gray-700">Hari</th>
                     <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-sm font-semibold text-gray-700">Jam</th>
                     <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-sm font-semibold text-gray-700">Tutor</th>
@@ -32,10 +31,14 @@
                 @foreach($jadwals as $jadwal)
                 <tr>
                     <td class="py-2 px-4 border-b border-gray-200">{{ $loop->iteration }}</td>
-                    <td class="py-2 px-4 border-b border-gray-200">{{ $jadwal->mata_pelajaran }}</td>
                     <td class="py-2 px-4 border-b border-gray-200">{{ $jadwal->hari }}</td>
-                    <td class="py-2 px-4 border-b border-gray-200">{{ \Carbon\Carbon::parse($jadwal->jam_mulai)->format('H:i') }} - {{ \Carbon\Carbon::parse($jadwal->jam_selesai)->format('H:i') }}</td>
-                    <td class="py-2 px-4 border-b border-gray-200">{{ $jadwal->tutor->nama ?? '-' }}</td>
+                    <td class="py-2 px-4 border-b border-gray-200">
+                        {{ \Carbon\Carbon::parse($jadwal->jam_mulai)->format('H:i') }} -
+                        {{ \Carbon\Carbon::parse($jadwal->jam_selesai)->format('H:i') }}
+                    </td>
+                    <td class="py-2 px-4 border-b border-gray-200">
+                        {{ $jadwal->tutor->nama }} ({{ $jadwal->tutor->mata_pelajaran }})
+                    </td>
                     <td class="py-2 px-4 border-b border-gray-200">{{ $jadwal->terdaftar }}/{{ $jadwal->kuota }}</td>
                     <td class="py-2 px-4 border-b border-gray-200">
                         <div class="flex space-x-2">

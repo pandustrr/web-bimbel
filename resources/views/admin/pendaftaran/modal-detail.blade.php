@@ -121,30 +121,6 @@
 
             <div class="mt-6 pt-4 border-t border-gray-200">
                 <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-sm font-medium text-gray-500">Status:</span>
-                        @if($pendaftaran->status == 'menunggu')
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                                <svg class="w-2 h-2 mr-1" fill="currentColor" viewBox="0 0 8 8">
-                                    <circle cx="4" cy="4" r="3"/>
-                                </svg>
-                                Menunggu Persetujuan
-                            </span>
-                        @elseif($pendaftaran->status == 'diterima')
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                <svg class="w-2 h-2 mr-1" fill="currentColor" viewBox="0 0 8 8">
-                                    <circle cx="4" cy="4" r="3"/>
-                                </svg>
-                                Diterima
-                            </span>
-                        @else
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                <svg class="w-2 h-2 mr-1" fill="currentColor" viewBox="0 0 8 8">
-                                    <circle cx="4" cy="4" r="3"/>
-                                </svg>
-                                Ditolak
-                            </span>
-                        @endif
                     </div>
                     <button onclick="toggleModal('detailModal{{ $pendaftaran->id }}')"
                             class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">

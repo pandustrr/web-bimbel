@@ -19,9 +19,17 @@ class Jadwal extends Model
         'terdaftar'
     ];
 
+    protected $dates = [
+        'jam_mulai',
+        'jam_selesai'
+    ];
+
     public function tutor()
     {
-        return $this->belongsTo(Tutor::class);
+        return $this->belongsTo(Tutor::class)->withDefault([
+            'nama' => 'Tutor Tidak Tersedia',
+            'mata_pelajaran' => '-'
+        ]);
     }
 
     public function pendaftarans()

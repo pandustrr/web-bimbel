@@ -32,7 +32,6 @@
                 <thead class="bg-gray-50">
                     <tr>
                         <th class="py-3 px-4 border-b text-left text-sm font-semibold text-gray-700">Hari</th>
-                        <th class="py-3 px-4 border-b text-left text-sm font-semibold text-gray-700">Mata Pelajaran</th>
                         <th class="py-3 px-4 border-b text-left text-sm font-semibold text-gray-700">Jam</th>
                         <th class="py-3 px-4 border-b text-left text-sm font-semibold text-gray-700">Tutor</th>
                         <th class="py-3 px-4 border-b text-left text-sm font-semibold text-gray-700">Kuota</th>
@@ -48,11 +47,6 @@
                                         {{ $hari }}
                                     </td>
                                 @endif
-
-                                <td class="py-3 px-4 border-b">
-                                    <div class="font-medium">{{ $jadwal->mata_pelajaran }}</div>
-                                    <div class="text-sm text-gray-500 mt-1">{{ $jadwal->tutor->mata_pelajaran }}</div>
-                                </td>
 
                                 <td class="py-3 px-4 border-b">
                                     {{ \Carbon\Carbon::parse($jadwal->jam_mulai)->format('H.i') }} -
