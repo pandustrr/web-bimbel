@@ -129,7 +129,6 @@
         </div>
     </div>
 
-    <!-- Modal Detail Peserta -->
     @foreach ($jadwals as $jadwal)
         @if ($jadwal->terdaftar > 0)
             <div id="detailModal{{ $jadwal->id }}"

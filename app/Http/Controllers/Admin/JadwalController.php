@@ -81,9 +81,13 @@ class JadwalController extends Controller
 
     public function destroy(Jadwal $jadwal)
     {
+        if ($jadwal->pendaftarans()->count() > 0) {
+            $jadwal->pendaftarans()->delete();
+        }
+
         $jadwal->delete();
 
         return redirect()->route('admin.jadwals.index')
-            ->with('success', 'Jadwal berhasil dihapus!');
+            ->with('success', 'Jadwal dan data pendaftaran terkait berhasil dihapus!');
     }
 }

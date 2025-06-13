@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\TutorController;
 use App\Http\Controllers\Admin\JadwalController;
 use App\Http\Controllers\Admin\PendaftaranController;
 use App\Http\Controllers\Siswa\BerandaController;
-use App\Http\Controllers\Siswa\TutorController as SiswaTutorController;
+use App\Http\Controllers\Siswa\TutorController as SiswaTutorController; 
 use App\Http\Controllers\Siswa\JadwalController as SiswaJadwalController;
 use App\Http\Controllers\Siswa\PendaftaranController as SiswaPendaftaranController;
 use Illuminate\Support\Facades\Route;

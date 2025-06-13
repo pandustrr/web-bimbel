@@ -18,7 +18,7 @@
                     Selamat Datang di Bimbel Online
                 </h1>
                 <p class="text-sl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                    Raih prestasi akademik lebih baik dengan bimbingan tutor berpengalaman kami dalam platform pembelajaran modern
+                    Raih prestasi akademik lebih baik dengan bimbingan tutor berpengalaman kami dalam platform Bimbel Online
                 </p>
             </div>
 
@@ -98,7 +98,7 @@
                                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Daftar Sekarang</h3>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Buat Akun untuk daftar</h3>
                             <p class="text-gray-600 mb-6 leading-relaxed">Kami menjamin peningkatan pemahaman materi dan
                                 nilai akademik siswa dengan metode terbukti efektif.</p>
                             <a href="{{ route('siswa.pendaftaran.create') }}"

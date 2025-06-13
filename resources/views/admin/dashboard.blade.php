@@ -23,7 +23,6 @@
 
     <div class="bg-white p-6 rounded-lg shadow">
         <h2 class="text-xl font-semibold mb-4">Selamat datang di Sistem Admin Bimbel Online</h2>
-        <p class="text-gray-700">Gunakan menu di atas untuk mengelola konten website.</p>
     </div>
 </div>
 @endsection
